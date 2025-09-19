@@ -1,0 +1,57 @@
+body {
+
+ background-color: mediumblue;
+}
+
+.menu {
+
+    background-color: rgb(110, 110, 110);
+    padding: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+ .foto {
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+.sobre {
+    
+    color: white;
+   font-family: Arial, sans-serif; 
+    padding: auto;
+
+}
+.cursoo {
+      
+    color: white;
+   font-family: Arial, sans-serif; 
+    padding: auto;
+
+
+
+}
+ .cert {
+     color: white;
+   font-family: Arial, sans-serif; 
+    padding: auto;
+
+
+ }
+    .red {
+        color: white;
+    font-family: Arial, sans-serif; 
+        padding: auto;   
+    }
+
+    footer {
+       
+        text-align: center;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: white;
+    }
