@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Celularus — Loja de Celulares</title>
+    <meta name="description" content="Celularus: sua loja de celulares. Marcas: Samsung, Motorola, Xiaomi e iPhone. Ofertas, comparação e pesquisa rápida." />
+
+    <!-- Open Graph / SEO básico -->
+    <meta property="og:title" content="Celularus — Loja de Celulares" />
+    <meta property="og:description" content="Marcas: Samsung, Motorola, Xiaomi e iPhone. Ofertas e pesquisa rápida." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://celularus.example" />
+    <meta name="theme-color" content="#0b0c10" />
+    <meta property="og:url" content="https://celularus.example" />
+    <meta property="og:image" content="/assets/og-banner.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "Celularus",
+        "url": "https://celularus.example",
+        "image": "/assets/og-banner.svg",
+        "description": "Loja de celulares: Samsung, Motorola, Xiaomi e iPhone.",
+        "brand": [
+          { "@type": "Brand", "name": "Samsung" },
+          { "@type": "Brand", "name": "Motorola" },
+          { "@type": "Brand", "name": "Xiaomi" },
+          { "@type": "Brand", "name": "Apple iPhone" }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="header">
+      <a class="brand" href="#" aria-label="Celularus - Página inicial">
+        <img src="/assets/logo.svg" alt="Logo Celularus" width="28" height="28" />
+        <span>celularus</span>
+      </a>
+
+      <form class="search" role="search" aria-label="Buscar celulares" onsubmit="return false">
+        <input id="searchInput" type="search" placeholder="Buscar modelos..." autocomplete="off" />
+        <button id="clearSearch" type="button" aria-label="Limpar busca">✕</button>
+      </form>
+    </header>
+
+    <main class="container">
+      <section class="filters" aria-label="Filtrar por marca">
+        <button class="chip active" data-brand="all">Todas</button>
+        <button class="chip" data-brand="samsung">Samsung</button>
+        <button class="chip" data-brand="motorola">Motorola</button>
+        <button class="chip" data-brand="xiaomi">Xiaomi</button>
+        <button class="chip" data-brand="iphone">iPhone</button>
+      </section>
+
+      <section>
+        <h2 class="section-title">Destaques</h2>
+        <div id="grid" class="grid" aria-live="polite"></div>
+        <div id="emptyState" class="empty" hidden>
+          <img src="/assets/empty.svg" alt="Sem resultados" width="120" height="120" />
+          <p>Nenhum resultado. Tente outra marca ou termo.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Celularus. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>
