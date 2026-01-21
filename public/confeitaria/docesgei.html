@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce da geisa | Confeitaria Artesanal</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --rosa-claro: #FFF5F7;
+            --rose: #F4C2C2;
+            --bege: #FDF5E6;
+            --vinho: #800020;
+            --branco: #FFFFFF;
+            --texto: #4A4A4A;
+            --sombra: rgba(128, 0, 32, 0.1);
+        }
+
+        /* RESET E GERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--texto);
+            background-color: var(--branco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        .header {
+            background: var(--branco);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--sombra);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--vinho);
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--vinho);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--rose);
+        }
+
+        .cart-icon {
+            cursor: pointer;
+            background: var(--rosa-claro);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* HERO */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--bege) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--vinho);
+        }
+
+        .hero h2 {
+            color: var(--rose);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* SOBRE NÓS */
+        .about {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image-placeholder {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: var(--bege);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--rose);
+            border: 2px dashed var(--rose);
+        }
+
+        /* PRODUTOS E CARDS */
+        .products {
+            padding: 80px 0;
+            background-color: var(--rosa-claro);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 22px;
+            border: 1px solid var(--rose);
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active {
+            background: var(--vinho);
+            color: white;
+            border-color: var(--vinho);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* ESTILO DO CARD COM FOTO */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            /* Para a imagem respeitar as bordas arredondadas */
+            box-shadow: 0 10px 20px var(--sombra);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Faz a foto preencher o espaço sem distorcer */
+            transition: 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            color: var(--vinho);
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--vinho);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* CARRINHO SIDEBAR */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
+            transition: 0.4s;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        /* CONTATO */
+        .contact {
+            padding: 80px 0;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border: 1px solid var(--rose);
+            border-radius: 10px;
+        }
+
+        /* BOTÕES */
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--vinho);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--vinho);
+            border: 1px solid var(--vinho);
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* Estilo dos Ícones Sociais */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        /* Cores Oficiais */
+        .instagram {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        .whatsapp {
+            background-color: #25D366;
+        }
+
+        .ifood {
+            background-color: #ea1d2c;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            opacity: 0.8;
+        }
+
+        .social-icon i {
+            font-size: 1.4rem;
+        }
+
+
+
+        /* NOVA SEÇÃO: TABELA DE PREÇOS (Imagem enviada) */
+        .cake-sizes {
+            padding: 60px 0;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .cake-sizes h2 {
+            color: var(--vinho);
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .cake-sizes h3 {
+            color: var(--rosa-tabela);
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .price-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: var(--rosa-claro);
+            border: 2px solid #000;
+        }
+
+        .price-table th,
+        .price-table td {
+            border: 1px solid #000;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .price-table th {
+            color: var(--rosa-tabela);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            background-color: #ff92928e;
+        }
+
+        .price-table tr:nth-child(even) {
+            background-color: #fff;
+        }
+
+        .price-table td {
+            color: #000;
+        }
+
+
+
+        /* SEÇÃO CONTATO REESTILIZADA */
+        .contact {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* Container dos Cards da Imagem */
+        .contato-info-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contato-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f5f5f5;
+        }
+
+        .contato-icon-circle {
+            width: 45px;
+            height: 45px;
+            background-color: #FFF0F3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contato-icon-circle i {
+            color: #A04C5A;
+            font-size: 1.1rem;
+        }
+
+        .contato-details h4 {
+            font-size: 1.05rem;
+            color: #4A2C2A;
+            margin-bottom: 2px;
+        }
+
+        .contato-details p {
+            font-size: 0.85rem;
+            color: #7A6360;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Ajuste das Redes Sociais abaixo dos cards */
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            justify-content: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+
+        /* ESTILO PARA RECHEIOS E ADICIONAIS */
+        .extras-section {
+            padding: 40px 0;
+            background-color: #fff;
+        }
+
+        .extras-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            border: 2px solid var(--vinho);
+            border-radius: 20px;
+            padding: 30px;
+            background-color: var(--rosa-claro);
+        }
+
+        .extra-item {
+            margin-bottom: 25px;
+        }
+
+        .extra-item h3 {
+            color: var(--vinho);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .extra-item h3 i {
+            color: #ff8da1;
+            /* Cor rosa do coração da imagem */
+            font-size: 1.2rem;
+        }
+
+        .extra-item p {
+            color: var(--texto);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .extra-price {
+            font-weight: bold;
+            color: var(--vinho);
+        }
+
+
+
+
+
+
+        .select-estilo {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--rose);
+            background-color: #fff;
+            color: var(--vinho);
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+        }
+
+        .opcoes-bolo label {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--vinho);
+            font-weight: 600;
+        }
+
+
+
+
+        /* Estilo para os menus de Recheios e Adicionais no Card */
+        .opcoes-bolo {
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        .opcoes-bolo label {
+            display: block;
+            margin-top: 8px;
+            margin-bottom: 2px;
+            color: var(--vinho);
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .select-estilo {
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--rose);
+            background-color: #fff;
+            color: var(--vinho);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="container nav">
+            <div class="logo">🧁 Doçura da Geisa</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Confeitaria Artesanal</h2>
+            <h1>Doçura da Geisa</h1>
+            <p>Feito à mão, com amor e os melhores ingredientes.</p>
+            <div style="margin-top: 20px;">
+                <a href="#produtos" class="btn btn-primary">Ver Cardápio</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about container" id="sobre">
+        <div class="about-content">
+            <div class="about-image-placehder"></div>
+            <div class="about-text">
+                <h2>Nossa História</h2>
+                <p> Da Bahia com o sonho de vencer. Começou fazendo doces simples, com muito esforço e amor. Enfrentou
+                    dificuldades, mas nunca desistiu. Hoje, sua confeitaria representa luta, fé e a certeza de que
+                    sonhos também podem ser doces. 🍰
+                </p>
+                <br>
+                <p>Os sabores da confeitaria são únicos e envolventes, com doces equilibrados, marcantes e feitos para
+                    agradar todos os paladares. Cada criação transmite carinho, dedicação e um toque especial que
+                    transforma cada momento em uma experiência doce e inesquecível. 🍰✨
+                </p>
+                <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="cake-sizes container">
+        <h2>Bolos</h2>
+        <h3>Tradicionais e personalizados</h3>
+        <div class="table-container">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Tamanhos</th>
+                        <th>Quantidade de Fatias</th>
+                        <th>Preços</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15 CM</td>
+                        <td>13 a 15 FATIAS</td>
+                        <td>R$ 75,00</td>
+                    </tr>
+                    <tr>
+                        <td>20 CM</td>
+                        <td>20 a 25 FATIAS</td>
+                        <td>R$ 145,00</td>
+                    </tr>
+                    <tr>
+                        <td>25 CM</td>
+                        <td>35 a 37 FATIAS</td>
+                        <td>R$ 175,00</td>
+                    </tr>
+                    <tr>
+                        <td>30 CM</td>
+                        <td>52 a 56 FATIAS</td>
+                        <td>R$ 235,00</td>
+                    </tr>
+                    <tr>
+                        <td>35 CM</td>
+                        <td>55 a 60 FATIAS</td>
+                        <td>R$ 260,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <section class="extras-section container">
+            <div class="extras-container">
+                <div class="extra-item">
+                    <h3><i class="fas fa-heart"></i> Recheios disponíveis</h3>
+                    <p>Brigadeiro tradicional (preto ou branco), Mousse (Morango, maracujá, chocolate, ninho, abacaxi,
+                        amendoim, creme de limão), ganache de chocolate, ninho com morango, doce de leite e prestígio.
+                    </p>
+                </div>
+
+                <div class="extra-item">
+                    <h3><i class="fas fa-heart"></i> Adicionais <span class="extra-price">R$ 20,00</span></h3>
+                    <p>Recheio de frutas, nutella e geleia de frutas frescas.</p>
+                </div>
+
+                <div class="extra-item">
+                    <h3><i class="fas fa-heart"></i> Topo do bolo <span class="extra-price">R$ 25,00</span></h3>
+                    <p>Personalize seu bolo com um topo exclusivo para sua comemoração.</p>
+                </div>
+            </div>
+        </section>
+
+
+    </section>
+
+
+
+    <section class="products" id="produtos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossas Delícias</h2>
+                <p>Escolha o seu favorito</p>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="bolos">Bolos personalizado</button>
+
+                <button class="filter-btn" data-filter="tra">Bolos tradicionais</button>
+
+                <button class="filter-btn" data-filter="travessa">travessa</button>
+                <button class="filter-btn" data-filter="doces">Doces</button>
+                <button class="filter-btn" data-filter="chup-chup">Chup-chup</button>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+            </div>
+        </div>
+    </section>
+
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <h3>Seu Carrinho</h3>
+        <div id="cart-items" style="flex:1; overflow-y:auto; margin: 20px 0;"></div>
+        <div class="total" style="font-weight:bold; display:flex; justify-content:space-between; margin-bottom:20px;">
+            <span>Total:</span>
+            <span id="cart-total">R$ 0,00</span>
+        </div>
+        <button class="btn btn-primary w-100" onclick="finalizarPedido()">Finalizar no WhatsApp</button>
+        <button class="btn btn-secondary w-100" style="margin-top:10px" onclick="toggleCart()">Fechar</button>
+    </aside>
+
+    <section class="contact container" id="contato">
+        <div class="section-title">
+            <h1>Contato</h1>
+            <p>Fale conosco ou venha nos visitar</p>
+        </div>
+
+        <div class="contact-wrapper">
+            <div class="contato-info-container">
+
+                <div class="contato-card">
+                    <div class="contato-icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contato-details">
+                        <h4>Endereço</h4>
+                        <p>Rua Nazaré - Belo Horizonte, MG</p>
+                    </div>
+                </div>
+
+                <div class="contato-card">
+                    <div class="contato-icon-circle"><i class="fas fa-phone-alt"></i></div>
+                    <div class="contato-details">
+                        <h4>Telefone / WhatsApp</h4>
+                        <p>(31) 7255-1579</p>
+                    </div>
+                </div>
+
+                <div class="contato-card">
+                    <div class="contato-icon-circle"><i class="far fa-clock"></i></div>
+                    <div class="contato-details">
+                        <h4>Horário de Funcionamento</h4>
+                        <p>Terça a Sexta: 8h às 20h<br>Sábado e Domingo: 9h às 14h</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" target="_blank" class="social-icon instagram" title="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/553172551579" target="_blank" class="social-icon whatsapp"
+                        title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon ifood" title="iFood"><i
+                            class="fas fa-utensils"></i></a>
+                </div>
+            </div>
+
+            <section class="about container" id="sobre">
+                <div class="about-content">
+                    <div class="about-image-placehder"></div>
+                    <div class="about-text">
+                        <h2>obrigado por comprar </h2>
+                        <p> Obrigado por adoçar sua vida com a gente 🍰✨
+                            Seu doce foi feito com ingredientes selecionados, amor e muito sabor. Esperamos te ver
+                            novamente em breve!
+                            <br>
+                            <br>
+                        <p>Na sua próxima compra, ganhe desconto especial como forma de agradecimento. Esperamos você!
+                        </p>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+
+    </section>
+
+    <footer style="text-align:center; padding:20px 0; background: var(--rosa-claro); margin-top:40px;">
+        <p>&copy; 2026 Doçura da Geisa. Todos os direitos reservados.</p>
+
+        <script>
+            // Seus dados de tamanhos para a categoria bolos
+            // Dados exatos da imagem
+            const bolos = [
+                { label: "15 CM (13 a 15 FATIAS)", preco: 75.00 },
+                { label: "20 CM (20 a 25 FATIAS)", preco: 145.00 },
+                { label: "25 CM (35 a 37 FATIAS)", preco: 175.00 },
+                { label: "30 CM (52 a 56 FATIAS)", preco: 235.00 },
+                { label: "35 CM (55 a 60 FATIAS)", preco: 260.00 }
+            ];
+
+            const recheios = [
+                "Brigadeiro Tradicional", "Brigadeiro Branco", "Mousse de Morango",
+                "Mousse de Maracujá", "Mousse de Chocolate", "Mousse de Ninho",
+                "Mousse de Abacaxi", "Mousse de Amendoim", "Creme de Limão",
+                "Ganache de Chocolate", "Ninho com Morango", "Doce de Leite", "Prestígio"
+            ];
+
+            const adicionais = [
+                { nome: "Nenhum", preco: 0 },
+                { nome: "Frutas Frescas", preco: 20.00 },
+                { nome: "Nutella", preco: 20.00 },
+                { nome: "Geleia de Frutas", preco: 20.00 },
+                { nome: "Topo de Bolo", preco: 25.00 }
+            ];
+
+
+
+
+            const mais = [
+                "Brigadeiro Tradicional", "Brigadeiro Branco", "Mousse de Morango",
+                "Mousse de Maracujá", "Mousse de Chocolate", "Mousse de Ninho",
+                "Mousse de Abacaxi", "Mousse de Amendoim", "Creme de Limão",
+                "Ganache de Chocolate", "Ninho com Morango", "Doce de Leite", "Prestígio"
+            ];
+
+
+            const produtos = [
+                { id: 1, nome: "Bolo do bob esponja", categoria: "bolos", preco: 75.00, foto: "img.img/WhatsApp Image 2026-01-14 at 17.44.03.jpeg", desc: "bob esponja." },
+                { id: 2, nome: "travessa de morango", categoria: "travessa", preco: 0, foto: "img.img/trave moran.png", desc: "morango com chocolate, melhor q tem" },
+                { id: 3, nome: "Bolo de dino ", categoria: "bolos", preco: 75.00, foto: "img.img/WhatsApp Image 2026-01-14 at 17.44.04.jpeg", desc: "boloo." },
+                { id: 4, nome: " centro de Brigadeiro Gourmet", categoria: "doces", preco: 4.00, foto: "img.img/briga.png", desc: "Vários sabores disponíveis." },
+                { id: 5, nome: "escolha seu doce", categoria: "doces", preco: 0.00, foto: "img.img/perso.png", desc: "escolha seu tipo de doce." },
+                { id: 6, nome: "travessa de uva", categoria: "travessa", preco: .00, foto: "img.img/trave uva.png", desc: "travessa otima para todo lugar." },
+                { id: 7, nome: "Chup-chup gourmet de bombom", categoria: "chup-chup", preco: 5.00, foto: "img.img/chup choco.png", desc: "textura refinada e um toque de sofisticação." },
+                { id: 8, nome: "Chup-chup gourmet de maracuja", categoria: "chup-chup", preco: 5.00, foto: "img.img/chup mara.png", desc: "Sabor intenso da fruta." },
+                { id: 9, nome: "Chup-chup gourmet de morango", categoria: "chup-chup", preco: 5.00, foto: "img.img/chup moran.png", desc: "Feito com morangos frescos." },
+                { id: 10, nome: "travessa de pavê", categoria: "travessa", preco: .00, foto: "img.img/pave bisco.png.jpeg", desc: "é pavê ou pra comer" },
+                { id: 11, nome: " centro Brigadeiro de colher", categoria: "doces", preco: 4.00, foto: "img.img/brigadeiro-de-colher.png", desc: "centro." },
+                { id: 12, nome: " centro de beijinho", categoria: "doces", preco: 4.00, foto: "img.img/beijinho.png", desc: " centro Vários sabores disponíveis." },
+                { id: 13, nome: "Bolo de anime", categoria: "bolos", preco: 75.00, foto: "img.img/WhatsApp Image 2026-01-14 at 17.44.06.jpeg", desc: "bolo do naruto forte." },
+                { id: 14, nome: "Bolo de mes", categoria: "bolos", preco: 75.00, foto: "img.img/Captura de tela 2026-01-14 230926.png", desc: "bolo de nenem." },
+                { id: 15, nome: "Bolo de aniversario", categoria: "bolos", preco: 75.00, foto: "img.img/bolo rosa.png", desc: "classico lindo" },
+                { id: 17, nome: "churros na cocher", categoria: "doces", preco: 0.00, foto: "img.img/churrros.png", desc: "delicia." },
+                { id: 18, nome: "Bolo de festa/casamento", categoria: "bolos", preco: 75.00, foto: "img.img/casa rosa.png", desc: "o gigante" },
+                { id: 19, nome: "escolha seu bolo", categoria: "tra", preco: 0.00, foto: "img.img/perso.png", desc: "escolha seu tipo de bolo." },
+                { id: 20, nome: "Bolo de chocolate", categoria: "tra", preco: 75.00, foto: "img.img/bochoco.png", desc: "O clássico com calda de chocolate." },
+                { id: 21, nome: "Bolo de morango", categoria: "tra", preco: 75.00, foto: "img.img/bomirango.png", desc: "morango muito bom." },
+                { id: 22, nome: "Bolo de coco", categoria: "tra", preco: 75.00, foto: "img.img/coc.png", desc: "O clássico com calda de chocolate." },
+                { id: 24, nome: "1 pedaço de bolo de cenoura", categoria: "tra", preco: 75.00, foto: "img.img/1 peda.png", desc: "1 pedaço de infancia." },
+                { id: 25, nome: "Bolo de 2 sabores", categoria: "tra", preco: 75.00, foto: "img.img/2 sabor.png", desc: "2 mundo." },
+                { id: 26, nome: "Bolo de Cenoura", categoria: "tra", preco: 75.00, foto: "img.img/ceno.png", desc: "bolo da infancia." },
+                { id: 27, nome: "brawnie", categoria: "doces", preco: 75.00, foto: "img.img/bra.png", desc: "muito bom com cafe" },
+
+
+            ];
+            let carrinho = JSON.parse(localStorage.getItem('carrinho_doce')) || [];
+
+            function renderProdutos(filtro = 'todos') {
+                const grid = document.getElementById('product-grid');
+                if (!grid) return;
+                grid.innerHTML = '';
+
+                const filtrados = filtro === 'todos' ? produtos : produtos.filter(p => p.categoria === filtro);
+
+                filtrados.forEach(p => {
+                    const imgTag = p.foto ? `<img src="${p.foto}" alt="${p.nome}">` : `<span style="font-size:3rem; opacity:0.2">📸</span>`;
+
+                    let seletorHTML = '';
+                    let precoHTML = `R$ ${p.preco.toFixed(2)}`;
+
+                    // Verifica se é da categoria 'bolos' ou 'tra' (tradicionais)
+                    if (p.categoria === 'bolos' || p.categoria === 'tra') {
+                        seletorHTML = `
+                <div class="opcoes-bolo">
+                    <label>TAMANHO:</label>
+                    <select id="select-bolo-${p.id}" class="select-estilo" onchange="atualizarPrecoCard(${p.id})">
+                        ${bolos.map((b, index) => `<option value="${index}">${b.label}</option>`).join('')}
+                    </select>
+                    <label>RECHEIO:</label>
+                    <select id="rec-${p.id}" class="select-estilo">
+                        ${recheios.map(r => `<option value="${r}">${r}</option>`).join('')}
+                    </select>
+                    <label>ADICIONAL:</label>
+                    <select id="add-${p.id}" class="select-estilo" onchange="atualizarPrecoCard(${p.id})">
+                        ${adicionais.map((a, index) => `<option value="${index}">${a.nome} ${a.preco > 0 ? '(+ R$' + a.preco + ')' : ''}</option>`).join('')}
+                    </select>
+                </div>
+            `;
+                        // Define o preço inicial baseado no primeiro item da tabela de bolos
+                        precoHTML = `<span id="preco-card-${p.id}">R$ ${bolos[0].preco.toFixed(2)}</span>`;
+                    }
+                    function renderProdutos(filtro = 'todos') {
+                        const grid = document.getElementById('product-grid');
+                        if (!grid) return;
+                        grid.innerHTML = '';
+
+                        const filtrados = filtro === 'todos' ? produtos : produtos.filter(p => p.categoria === filtro);
+
+                        filtrados.forEach(p => {
+                            const imgTag = p.foto ? `<img src="${p.foto}" alt="${p.nome}">` : `<span style="font-size:3rem; opacity:0.2">📸</span>`;
+
+                            let seletorHTML = '';
+                            let precoHTML = `R$ ${p.preco.toFixed(2)}`;
+
+                            // AQUI ESTÁ O SEGREDO: Adicionei o 'tra' na verificação
+                            if (p.categoria === 'bolos' || p.categoria === 'tra') {
+                                seletorHTML = `
+                <div class="opcoes-bolo">
+                    <label>TAMANHO:</label>
+                    <select id="select-bolo-${p.id}" class="select-estilo" onchange="atualizarPrecoCard(${p.id})">
+                        ${bolos.map((b, index) => `<option value="${index}">${b.label}</option>`).join('')}
+                    </select>
+                    <label>RECHEIO:</label>
+                    <select id="rec-${p.id}" class="select-estilo">
+                        ${recheios.map(r => `<option value="${r}">${r}</option>`).join('')}
+                    </select>
+                    <label>ADICIONAL:</label>
+                    <select id="add-${p.id}" class="select-estilo" onchange="atualizarPrecoCard(${p.id})">
+                        ${adicionais.map((a, index) => `<option value="${index}">${a.nome} ${a.preco > 0 ? '(+ R$' + a.preco + ')' : ''}</option>`).join('')}
+                    </select>
+                </div>
+            `;
+                                // O preço inicial do card vira o preço do primeiro tamanho (15cm)
+                                precoHTML = `<span id="preco-card-${p.id}">R$ ${bolos[0].preco.toFixed(2)}</span>`;
+                            }
+
+                            grid.innerHTML += `
+            <div class="product-card">
+                <div class="product-image">${imgTag}</div>
+                <div class="product-info">
+                    <h3>${p.nome}</h3>
+                    <p>${p.desc}</p>
+                    ${seletorHTML}
+                    <span class="price">${precoHTML}</span>
+                    <button class="btn btn-primary w-100" onclick="addCarrinho(${p.id})">Adicionar</button>
+                </div>
+            </div>
+        `;
+                        });
+                    }
+
+                    grid.innerHTML += `
+            <div class="product-card">
+                <div class="product-image">${imgTag}</div>
+                <div class="product-info">
+                    <h3>${p.nome}</h3>
+                    <p>${p.desc}</p>
+                    ${seletorHTML}
+                    <span class="price">${precoHTML}</span>
+                    <button class="btn btn-primary w-100" onclick="addCarrinho(${p.id})">Adicionar</button>
+                </div>
+            </div>
+        `;
+                });
+            }
+
+            function atualizarPrecoCard(id) {
+                const p = produtos.find(x => x.id === id);
+                // Adicionado check para 'tra' também
+                if (p && (p.categoria === 'bolos' || p.categoria === 'tra')) {
+                    const tamIdx = document.getElementById(`select-bolo-${id}`).value;
+                    const addIdx = document.getElementById(`add-${id}`).value;
+                    const total = bolos[tamIdx].preco + adicionais[addIdx].preco;
+                    document.getElementById(`preco-card-${id}`).innerText = `R$ ${total.toFixed(2)}`;
+                }
+            }
+
+            function addCarrinho(id) {
+                const prodOriginal = produtos.find(p => p.id === id);
+                if (!prodOriginal) return;
+
+                let item = { ...prodOriginal };
+
+                // Se for bolo (personalizado ou tradicional), pega os valores dos selects
+                function atualizarPrecoCard(id) {
+                    const p = produtos.find(x => x.id === id);
+                    if (p && (p.categoria === 'bolos' || p.categoria === 'tra')) {
+                        const tamIdx = document.getElementById(`tam-${id}`).value;
+                        const addIdx = document.getElementById(`add-${id}`).value;
+                        const total = bolosTamanhos[tamIdx].preco + adicionaisList[addIdx].preco;
+                        document.getElementById(`preco-card-${id}`).innerText = `R$ ${total.toFixed(2)}`;
+                    }
+                }
+                carrinho.push(item);
+                atualizarCarrinho();
+
+                // Abre o carrinho automaticamente
+                const sidebar = document.getElementById('cart-sidebar');
+                if (sidebar && !sidebar.classList.contains('active')) {
+                    toggleCart();
+                }
+            }
+
+            function atualizarCarrinho() {
+                localStorage.setItem('carrinho_doce', JSON.stringify(carrinho));
+                document.getElementById('cart-count').innerText = carrinho.length;
+                const itensDiv = document.getElementById('cart-items');
+                let total = 0;
+                itensDiv.innerHTML = '';
+
+                carrinho.forEach((item, index) => {
+                    total += item.preco;
+                    itensDiv.innerHTML += `
+            <div style="margin-bottom:10px; border-bottom:1px solid #eee; padding-bottom:5px;">
+                <div style="display:flex; justify-content:space-between; font-size:0.9rem;">
+                    <strong>${item.nome}</strong>
+                    <span>R$ ${item.preco.toFixed(2)} <button onclick="remover(${index})" style="color:red; border:none; background:none; cursor:pointer;">X</button></span>
+                </div>
+                ${item.detalhes ? `<div style="font-size:0.75rem; color:#666;">${item.detalhes}</div>` : ''}
+            </div>`;
+                });
+                document.getElementById('cart-total').innerText = `R$ ${total.toFixed(2)}`;
+            }
+
+            function remover(index) {
+                carrinho.splice(index, 1);
+                atualizarCarrinho();
+            }
+
+            function toggleCart() {
+                document.getElementById('cart-sidebar').classList.toggle('active');
+            }
+
+            function finalizarPedido() {
+                if (carrinho.length === 0) return alert("Carrinho vazio!");
+                let texto = "🧁 *Novo Pedido - Doce Encanto*\n\n";
+                carrinho.forEach(item => {
+                    texto += `• *${item.nome}*\n${item.detalhes ? '  ' + item.detalhes + '\n' : ''}  Preço: R$ ${item.preco.toFixed(2)}\n\n`;
+                });
+                texto += `*Total: ${document.getElementById('cart-total').innerText}*`;
+                window.open(`https://wa.me/553172551579?text=${encodeURIComponent(texto)}`);
+            }
+
+            // Filtros
+            document.addEventListener('click', function (e) {
+                if (e.target.classList.contains('filter-btn')) {
+                    document.querySelector('.filter-btn.active').classList.remove('active');
+                    e.target.classList.add('active');
+                    renderProdutos(e.target.dataset.filter);
+                }
+            });
+
+            window.onload = () => { renderProdutos(); atualizarCarrinho(); };
+
+
+            function enviarMensagemContato() {
+                const nome = document.querySelector('input[placeholder="Seu Nome"]').value;
+                const fone = document.querySelector('input[placeholder="Seu WhatsApp"]').value;
+                const msgCli = document.querySelector('textarea').value;
+
+                // SEU NÚMERO AQUI (Exemplo: 55 + DDD + Numero)
+                const seuNumero = "553172551579";
+
+                const textoFinal = `Olá! Meu nome é ${nome}. \nMeu contato: ${fone} \n\n*Mensagem:* ${msgCli}`;
+
+                // Abre o WhatsApp com a mensagem pronta
+                window.open(`https://wa.me/${553172551579}?text=${encodeURIComponent(oiii)}`);
+            }
+        </script>

@@ -1,0 +1,45 @@
+/* Google Fonts - Definindo as famílias de fontes */
+.font-dancing-script {
+    font-family: 'Dancing Script', cursive;
+}
+
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Animações customizadas */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delay {
+    animation: float 3.5s ease-in-out infinite 0.5s; /* Um pequeno atraso para variação */
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 4s ease-in-out infinite;
+}
+
+/* Estilo para o botão de filtro ativo */
+.filter-btn.active {
+    background-color: #ec4899; /* pink-600 */
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Adiciona uma sombra mais forte */
+}
+
+/* Estilo para o botão de scroll to top */
+#scrollToTopBtn.show {
+    opacity: 1;
+    display: block;
+}
