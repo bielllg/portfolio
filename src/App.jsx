@@ -659,7 +659,7 @@ const Portfolio = () => {
                             {[
 
                                 { name: "GitHub", icon: Github, url: "https://github.com/bielllg" },
-                                { name: "Instagram", icon: Disc, url: "#" },
+                                { name: "Instagram", icon: Disc, url: "https://www.instagram.com/gabr.ieldevweb/#" },
                                 { name: "WhatsApp", icon: Zap, url: "https://wa.me/5531988004874" }
                             ].map((social, idx) => {
                                 const isActive = activeSocialIndex === idx;
